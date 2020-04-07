@@ -13,7 +13,6 @@ function fn3(matrix) {
 }
  
 let res1 = fn3(fn2(fn1(matrix)));
-console.log(res1);
  
 function compose(...args) {
  return (matrx) => {
@@ -27,5 +26,16 @@ const withCompose = compose(
     fn3
 );
 
-console.log(withCompose(matrix));
+const withCompose2 = compose(
+    fn2,
+    fn2,
+    fn2
+);
+
+const superPuper = compose(
+    withCompose,
+    withCompose2
+);
+
+console.log(superPuper(matrix));
  
