@@ -1,5 +1,5 @@
-function greetings(){
-    console.log(this.name + ', hello bro!');
+function greetings(hisLove){
+    console.log(`${this.name}  hello bro! How is your ${hisLove}?`);
 }
 
 const myBuddy = {
@@ -7,12 +7,12 @@ const myBuddy = {
 }
 
 
-Function.prototype.bindMy = function (context) {
+Function.prototype.bindMy = function (context, ...rest) {
     context['anyDuck'] = this;
     return function(){
-        return context['anyDuck']();
+        return context['anyDuck'](...rest);
     }
 }
 
-console.log(greetings.bindMy(myBuddy)());
+console.log(greetings.bindMy(myBuddy, 'rubber duck')());
 
